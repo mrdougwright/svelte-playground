@@ -12,9 +12,9 @@ on:click tag here creates event handler to be handled by parent
  </script>
 
 <!-- the second arg to dispatch is the `detail` -->
-{#each buttons as info}
-  <button on:click={() => dispatch('click', {value: info.value})}>
-    {info.text}
+{#each buttons as button}
+  <button on:click={() => dispatch('click', {value: button.value})}>
+    {button.text}
   </button>
 {/each}
 
