@@ -1,36 +1,19 @@
 <script>
   import Face from "./Face.svelte"
   import Container from "./Container.svelte"
+	import Header from "./Header.svelte"
 
-  let say = false
+	let showHeader = false
 
-	setTimeout(() => {
-		say = true
-	}, 1000)
+	setTimeout(() => { showHeader = true }, 1000)
 </script>
 
+{#if showHeader}
+  <Header/>
+{/if}
 
 <Container>
-	<!-- this component's div -->
-	{#if say}
-	  <div>Hello!</div>
-	{:else}
-	  not saying anything yet...
-	{/if}
-
-	<!-- this component and others affected by :global -->
-	{#each [2,1,0] as faceIndex}
-		<Face index={faceIndex}/>
-	{/each}
-
-	<!-- shorthand:
-		{#each [2,1,0] as index}
-			<Face {index}/>
-		{/each}
-	 -->
-
 </Container>
-
 
 
 
@@ -38,10 +21,14 @@
 
 <style>
   /* affects styling for html in this component */
-  div { color: red; }
+  div {
+		color: red;
+	}
 
 	/* affects styling globally, for all components in this file? */
-  :global(*) { box-sizing: border-box; }
+  :global(*) {
+		box-sizing: border-box;
+	}
 	:global(body, html) {
 		margin: 0;
 		height: 100vh;
