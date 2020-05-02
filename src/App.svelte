@@ -21,6 +21,6 @@
 <div> Say: {say} </div>
 
 <!-- this component and others affected by :global -->
-<Face size="4"/>
-<Face size="10"/>
-<Face />
+<Face index={0} size="10"/>
+<Face index={1} size="4"/>
+<Face index={2}/>

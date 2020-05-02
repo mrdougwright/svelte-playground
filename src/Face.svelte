@@ -1,9 +1,12 @@
 <script>
-  export let size = 2;
+  export let index = 0
+  export let size = 1
+
+  let faceList = ["=)", ":/", ">:|"]
 </script>
 
 <div style="font-size: {size}em">
-  =)
+  {faceList[index]}
 </div>
 
 
