@@ -5,8 +5,16 @@ Sending child events to the parent
 on:click tag here creates event handler to be handled by parent
  -->
 
-<button on:click>
-  <slot></slot>
+ <script>
+   import {createEventDispatcher} from 'svelte'
+   const dispatch = createEventDispatcher()
+ </script>
+
+<button on:click={() => dispatch('show')}>
+  Show
+</button>
+<button on:click={() => dispatch('hide')}>
+  Hide
 </button>
 
 <!-- This is a button with its own onclick event handler -->

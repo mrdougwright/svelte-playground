@@ -13,8 +13,11 @@
 
 <Container>
 
-<!-- This onclick wont work without the child button -->
-	<Button on:click={() => {showHeader = true}}>show</Button>
+<!-- events `show` and `hide` handled here, sent by the child. -->
+	<Button
+	  on:show={() => {showHeader = true}}
+	  on:hide={() => {showHeader = false}}
+	></Button>
 
 </Container>
 
