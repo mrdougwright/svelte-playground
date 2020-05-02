@@ -1,35 +1,40 @@
 <script>
-  import Face from "./Face.svelte"
-  import Container from "./Container.svelte"
-	import Header from "./Header.svelte"
-	import Button from "./Button.svelte"
+  import Face from './Face.svelte';
+  import Container from './Container.svelte';
+  import Header from './Header.svelte';
+  import Buttons from './Buttons.svelte';
+  let showHeader = false;
 
-	let showHeader = false
+  const buttons = [
+      {value: 0,  text: 'ummmmmm......'},
+      {value: 1,  text: 'I sure do!'},
+      {value: -2, text: 'gross!'}
+  ]
+  let score = 0;
 </script>
 
+
 {#if showHeader}
-  <Header/>
+  <Header />
 {/if}
-
 <Container>
-
-<!-- the event `click` handled here, sent by the child. -->
-<!-- `detail` is a Svelte CustomEvent.detail property that holds any data
-from the 2nd arg passed to the dispatcher -->
-<Button on:click={(e) => {showHeader = e.detail}}></Button>
-
+  Do you like pizza? Score: {score}
+  <Buttons {buttons} on:click={(e) => {score += e.detail.value}} />
 </Container>
 
-
-
+<!-- Challenge 3 -
+1. add a prop in Buttons.svelte called buttons which is a list of objects like:
+[{value: '', text: ''}, ...etc]
+2. use #each to turn all the objects into buttons that
+  a. have innerHTML equal to the .text of the object
+  b. dispatch a click event that passes the .value of the object
+3. Handle the event in App.svelte to update the score
+-->
 
 <style>
-  /* affects styling for html in this component */
   div {
-		color: red;
-	}
-
-	/* affects styling globally, for all components in this file? */
+    color: red;
+  }
   :global(*) {
 		box-sizing: border-box;
 	}

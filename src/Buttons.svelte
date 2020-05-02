@@ -8,15 +8,15 @@ on:click tag here creates event handler to be handled by parent
  <script>
    import {createEventDispatcher} from 'svelte'
    const dispatch = createEventDispatcher()
+   export let buttons = [{value: 0, text: "no info from parent"}]
  </script>
 
 <!-- the second arg to dispatch is the `detail` -->
-<button on:click={() => dispatch('click', true)}>
-  Show
-</button>
-<button on:click={() => dispatch('click', false)}>
-  Hide
-</button>
+{#each buttons as info}
+  <button on:click={() => dispatch('click', {value: info.value})}>
+    {info.text}
+  </button>
+{/each}
 
 <!-- This is a button with its own onclick event handler -->
 <!-- <button on:click={() => {showHeader = true}}>show</button> -->
