@@ -13,11 +13,10 @@
 
 <Container>
 
-<!-- events `show` and `hide` handled here, sent by the child. -->
-	<Button
-	  on:show={() => {showHeader = true}}
-	  on:hide={() => {showHeader = false}}
-	></Button>
+<!-- the event `click` handled here, sent by the child. -->
+<!-- `detail` is a Svelte CustomEvent.detail property that holds any data
+from the 2nd arg passed to the dispatcher -->
+<Button on:click={(e) => {showHeader = e.detail}}></Button>
 
 </Container>
 

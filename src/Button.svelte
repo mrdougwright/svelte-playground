@@ -10,10 +10,11 @@ on:click tag here creates event handler to be handled by parent
    const dispatch = createEventDispatcher()
  </script>
 
-<button on:click={() => dispatch('show')}>
+<!-- the second arg to dispatch is the `detail` -->
+<button on:click={() => dispatch('click', true)}>
   Show
 </button>
-<button on:click={() => dispatch('hide')}>
+<button on:click={() => dispatch('click', false)}>
   Hide
 </button>
 
