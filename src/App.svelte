@@ -2,10 +2,9 @@
   import Face from "./Face.svelte"
   import Container from "./Container.svelte"
 	import Header from "./Header.svelte"
+	import Button from "./Button.svelte"
 
 	let showHeader = false
-
-	setTimeout(() => { showHeader = true }, 1000)
 </script>
 
 {#if showHeader}
@@ -13,8 +12,11 @@
 {/if}
 
 <Container>
-</Container>
 
+<!-- This onclick wont work without the child button -->
+	<Button on:click={() => {showHeader = true}}>show</Button>
+
+</Container>
 
 
 

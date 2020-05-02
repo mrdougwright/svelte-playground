@@ -1,0 +1,30 @@
+<!--
+Event Forwarding
+Sending child events to the parent
+
+on:click tag here creates event handler to be handled by parent
+ -->
+
+<button on:click>
+  <slot></slot>
+</button>
+
+<!-- This is a button with its own onclick event handler -->
+<!-- <button on:click={() => {showHeader = true}}>show</button> -->
+
+
+<style>
+    button {
+        font-family: 'Nunito', sans-serif;
+		    display: block;
+        font-size: 1.2rem;
+        margin: 10px;
+        transition: 1s;
+        padding: 0.7em 1em;
+        cursor: pointer;
+        border-radius: 50px;
+        background-color: #40b3ff;
+        color: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	}
+</style>
