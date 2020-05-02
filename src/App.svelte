@@ -2,21 +2,33 @@
   import Face from "./Face.svelte"
   import Container from "./Container.svelte"
 
-  let say = "hi"
+  let say = false
+
 	setTimeout(() => {
-		say = 'bye'
+		say = true
 	}, 1000)
 </script>
 
 
 <Container>
 	<!-- this component's div -->
-	<div> Say: {say} </div>
+	{#if say}
+	  <div>Hello!</div>
+	{:else}
+	  not saying anything yet...
+	{/if}
 
 	<!-- this component and others affected by :global -->
-	<Face index={0} size="10"/>
-	<Face index={1} size="4"/>
-	<Face index={2}/>
+	{#each [2,1,0] as faceIndex}
+		<Face index={faceIndex}/>
+	{/each}
+
+	<!-- shorthand:
+		{#each [2,1,0] as index}
+			<Face {index}/>
+		{/each}
+	 -->
+
 </Container>
 
 
