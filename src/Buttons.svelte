@@ -23,6 +23,12 @@ on:click tag here creates event handler to be handled by parent
 
 
 <style>
+    .buttons-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 2em 1em;
+    }
     button {
         font-family: 'Nunito', sans-serif;
 		    display: block;
