@@ -9,34 +9,34 @@
 	let happyScore = 0
 	let storyIndex = 0
 
-	$: smileySays = showMsg(storyIndex)
-	$: buttons = story[storyIndex].buttons
+	$: question = story[storyIndex]
+	$: smileySays = question.end ? finalMessage() : question.smileySays
+	$: buttons = question.buttons
 
 	$: if (happyScore > 0 && storyIndex === 3) showHeader = true
 
 	const clickHandler = (e) => {
-		storyIndex += 1
-		happyScore += e.detail.value
+		if (e.detail.value === "reset") {
+			storyIndex = 0
+			happyScore = 0
+			showHeader = false
+		} else {
+			storyIndex += 1
+			happyScore += e.detail.value
+		}
 	}
+
 	let name = "Doug"
 	let count = 0
 
-	const showMsg = (index) => {
-		let msg = story[index]
-		if (index === 5) {
-			if (happyScore > 0) {
-			  return msg.end.nice
-			} else if (happyScore < 0) {
-				return msg.end.mean
-			}
-				return msg.end.neutral
+	const finalMessage = () => {
+		if (happyScore > 0) {
+		  return question.end.nice
+		} else if (happyScore < 0) {
+			return question.end.mean
+		} else {
+			return question.end.neutral
 		}
-
-		if (index === 6) {
-			storyIndex = 0
-			happyScore = 0
-		}
-		return story[storyIndex].smileySays
 	}
 </script>
 
